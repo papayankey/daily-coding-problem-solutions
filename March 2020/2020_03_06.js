@@ -20,7 +20,6 @@ const numbers = [1, 2, 3, 4, 5];
 // const numbers = [1, 7, 2, 3];
 
 let output = [];
-
 for (let i = 0; i < numbers.length; i++) {
   let result = 1;
   for (let j = 0; j < numbers.length; j++) {
