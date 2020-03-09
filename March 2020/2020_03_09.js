@@ -8,6 +8,17 @@
 
 // Given this implementation of cons:
 
+/*
+  function cons(a, b) {
+    function pair(f) {
+      return f(a, b);
+    }
+    return pair;
+  }
+*/
+
+// Implement car and cdr
+
 // ===
 
 // Solution
