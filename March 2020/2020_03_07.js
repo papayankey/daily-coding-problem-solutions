@@ -62,7 +62,7 @@ let node = new Node(
 );
 
 try {
-  let actual = node.left.left.val;
+  let actual = deserialize(serialize(node)).left.left.val;
   let expected = 'left.left';
   assert.deepStrictEqual(actual, expected);
   console.log(`
