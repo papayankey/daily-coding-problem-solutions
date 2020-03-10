@@ -1,3 +1,5 @@
+const assertion = require('../assert');
+
 // Question
 
 // This problem was asked by Jane Street.
@@ -22,3 +24,26 @@
 // ===
 
 // Solution
+
+function cons(a, b) {
+  function pair(f) {
+    return f(a, b);
+  }
+  return pair;
+}
+
+function car(pair) {
+  const getFirstItem = (x, y) => x;
+  return pair(getFirstItem);
+}
+
+function cdr(pair) {
+  const getLastItem = (x, y) => y;
+  return pair(getLastItem);
+}
+
+// test
+let actual = car(cons(3, 4));
+let expected = cdr(cons(3, 4));
+
+assertion(actual, expected);
