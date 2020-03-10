@@ -43,7 +43,11 @@ function cdr(pair) {
 }
 
 // test
-let actual = car(cons(3, 4));
-let expected = cdr(cons(3, 4));
+let carActual = car(cons(3, 4));
+let carExpected = 3;
 
-assertion(actual, expected);
+let cdrActual = cdr(cons(3, 4));
+let cdrExpected = 4;
+
+assertion(carActual, carExpected);
+assertion(cdrActual, cdrExpected);
