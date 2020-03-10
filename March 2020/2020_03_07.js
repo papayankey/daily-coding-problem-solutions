@@ -1,4 +1,4 @@
-const assert = require('assert').strict;
+const assertion = require('../assert');
 
 // This problem was asked by Google.
 
@@ -61,15 +61,8 @@ let node = new Node(
   new Node('right'),
 );
 
-try {
-  let actual = deserialize(serialize(node)).left.left.val;
-  let expected = 'left.left';
-  assert.deepStrictEqual(actual, expected);
-  console.log(`
-  Values are strictly deep-equal: 
-    + actual: ${actual}
-    + expected: ${expected}
-  `);
-} catch (error) {
-  console.log(error.message);
-}
+// test
+let actual = deserialize(serialize(node)).left.left.val;
+let expected = 'left.left';
+
+assertion(actual, expected);
