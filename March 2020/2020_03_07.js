@@ -40,18 +40,55 @@ class Node {
   }
 }
 
-// serialize fn
+// serialize function turns the binary tree
+// into string
 function serialize(node) {
-  // json stringify node
-  let json = JSON.stringify(node);
-  return json;
+  if (!node) return null;
+
+  // serialize left
+  let leftSerialized = serialize(node.left);
+
+  // serialize right
+  let rightSerialized = serialize(node.right);
+
+  // return tree as string
+  return node.val + ',' + leftSerialized + ',' + rightSerialized;
 }
 
-// deserialize fn
-function deserialize(json) {
-  // json parse stringified node to object
-  let node = JSON.parse(json);
-  return node;
+// deserialize function reconstructs a
+// a serialize tree to tree nodes
+function deserialize(str) {
+  let itrs = iterator(str.split(','));
+  return deserializeHelper(itrs);
+}
+
+// deserialize helper
+function deserializeHelper(itrs) {
+  let val = itrs.next().value;
+
+  // return null if value === null
+  if (val === 'null') {
+    return null;
+  }
+
+  // create new node
+  let newNode = new Node(val);
+
+  // create left nodes
+  newNode.left = deserializeHelper(itrs);
+
+  // create right nodes
+  newNode.right = deserializeHelper(itrs);
+
+  return newNode;
+}
+
+// iterator
+function* iterator(nodesList) {
+  let index = 0;
+  while (nodesList.length - 1 > 0) {
+    yield nodesList[index++];
+  }
 }
 
 // test
